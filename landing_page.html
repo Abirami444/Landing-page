@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the World</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Verdana', sans-serif; /* Changed font family */
+            line-height: 1.6;
+            color: #ad1661; /* Changed font color */
+            background-color: #121212;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between; /* Space between the left and right sections */
+            align-items: center; /* Vertically center the items */
+            background: linear-gradient(90deg, rgba(255, 223, 0, 0.9), rgba(255, 87, 51, 0.9));
+            color: #710b0b;
+            padding: 10px 20px; /* Add padding to header */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0; /* Remove default margin */
+            font-size: 1.8rem; /* Slightly larger title size */
+            font-weight: bold; /* Bold title */
+        }
+
+        nav {
+            margin-top: 5px; /* Smaller margin */
+        }
+
+        nav a {
+            color: #720e52;
+            text-decoration: none;
+            margin: 0 15px; /* Increased margin for better spacing */
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #33ff85;
+        }
+
+        .right-nav {
+            display: flex;
+            align-items: center; /* Vertically center the items in the right nav */
+        }
+
+        section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: rgb(244, 164, 89);
+            padding: 20px; /* Added padding for spacing */
+            cursor: pointer; /* Indicate clickable sections */
+            transition: background 0.5s; /* Smooth transition */
+            padding-top: 80px; /* Add space for header */
+        }
+
+        .parallax {
+            background-color: #1d1d1d; /* Fallback color */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1; /* Behind content */
+            opacity: 0.5; /* Faded effect */
+            transition: opacity 0.5s; /* Smooth transition for fade */
+            background-size: cover; /* Cover the entire section */
+            background-position: center; /* Center the background image */
+        }
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 2; /* Ensure content is on top */
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        p {
+            font-size: 1.2rem;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            animation-delay: 1s;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #FFD700;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Explore the World</h1>
+        <nav>
+            <div>
+                <a href="#beach">Beaches</a>
+                <a href="#mountains">Mountains</a>
+                <a href="#cities">Cities</a>
+                <a href="#adventures">Adventures</a>
+                <a href="#nature">Nature</a>
+            </div>
+            <div class="right-nav">
+                <a href="#" onclick="return false;">Contact</a>
+                <a href="#" onclick="return false;">Help</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="parallax" id="beach" onclick="navigateTo('beach')">
+        <div class="background" style="background-image: url('Beach.jpg');"></div>
+        <div class="content">
+            <h2>Relax on Beautiful Beaches</h2>
+            <p>Discover stunning coastlines and sandy shores around the globe.</p>
+        </div>
+    </section>
+
+    <section class="parallax" id="mountains" onclick="navigateTo('mountains')">
+        <div class="background" style="background-image: url('Mountain.jpg');"></div> <!-- Updated to Mountain.jpg -->
+        <div class="content">
+            <h2>Adventure in the Mountains</h2>
+            <p>Explore breathtaking landscapes and conquer new heights.</p>
+        </div>
+    </section>
+
+    <section class="parallax" id="cities" onclick="navigateTo('cities')">
+        <div class="background" style="background-image: url('City.jpg');"></div>
+        <div class="content">
+            <h2>Experience Vibrant Cities</h2>
+            <p>Immerse yourself in the culture and energy of bustling urban life.</p>
+        </div>
+    </section>
+
+    <section class="parallax" id="adventures" onclick="navigateTo('adventures')">
+        <div class="background" style="background-image: url('Adventure.jpg');"></div>
+        <div class="content">
+            <h2>Thrilling Adventures Await</h2>
+            <p>From hiking to surfing, experience the thrill of adventure!</p>
+        </div>
+    </section>
+
+    <section class="parallax" id="nature" onclick="navigateTo('nature')">
+        <div class="background" style="background-image: url('Nature.jpg');"></div>
+        <div class="content">
+            <h2>Connect with Nature</h2>
+            <p>Explore the beauty and serenity of nature's wonders.</p>
+        </div>
+    </section>
+
+    <!-- New Contact Section -->
+    <section class="parallax" id="contact" onclick="navigateTo('contact')">
+        <div class="background" style="background-image: url('Nature.jpg');"></div>
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for any inquiries or support.</p>
+        </div>
+    </section>
+
+    <!-- New Help Section -->
+    <section class="parallax" id="help" onclick="navigateTo('help')">
+        <div class="background" style="background-image: url('Adventure.jpg');"></div>
+        <div class="content">
+            <h2>Help & Support</h2>
+            <p>Find answers to your questions or reach out for assistance.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Explore the World. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function navigateTo(section) {
+            // Simulate navigating to a new page by scrolling to the respective section
+            document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
